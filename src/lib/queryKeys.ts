@@ -26,4 +26,12 @@ export const queryKeys = {
     user: (id: string) => ['admin', 'users', id] as const,
     stats: () => ['admin', 'stats'] as const,
   },
+  transactions: {
+    list: () => ['transactions', 'list'] as const,
+    detail: (id: string) => ['transactions', 'detail', id] as const,
+  },
+  summary: {
+    totals: () => ['summary', 'totals'] as const,
+    insights: () => ['summary', 'insights'] as const,
+  },
 } as const;

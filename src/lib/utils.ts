@@ -14,7 +14,12 @@ export function relativeTime(date: string | Date): string {
   return formatDistanceToNow(new Date(date), { addSuffix: true });
 }
 
+export function formatCurrency(amount: number, currency = 'USD'): string {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(amount);
+}
+
 export function truncate(str: string, maxLength: number): string {
   if (str.length <= maxLength) return str;
   return `${str.slice(0, maxLength)}…`;
 }
+
