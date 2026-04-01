@@ -28,4 +28,10 @@ export const ROUTES = {
     leadRequests: '/admin/lead-requests',
     campaigns: '/admin/campaigns',
   },
+  finance: {
+    login: '/finance/login',
+    dashboard: '/finance/dashboard',
+    transactions: '/finance/transactions',
+    insights: '/finance/insights',
+  },
 } as const;

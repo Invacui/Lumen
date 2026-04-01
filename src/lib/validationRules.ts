@@ -9,8 +9,6 @@
  * <Input {...register('email', validationRules.email)} />
  */
 
-import { INDUSTRIES } from "@/constants/industries.constant";
-
 export const validationRules = {
   /**
    * @type {Object} name

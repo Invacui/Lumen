@@ -42,6 +42,12 @@ const AdminUserDetail = lazy(() => import('@/routes/admin/AdminUserDetail'));
 const AdminLeadRequests = lazy(() => import('@/routes/admin/AdminLeadRequests'));
 const AdminCampaigns = lazy(() => import('@/routes/admin/AdminCampaigns'));
 
+const FinanceLayout = lazy(() => import('@/routes/finance/Layout'));
+const FinanceLogin = lazy(() => import('@/pages/finance/FinanceLoginPage'));
+const FinanceDashboard = lazy(() => import('@/pages/finance/FinanceDashboardPage'));
+const FinanceTransactions = lazy(() => import('@/pages/finance/FinanceTransactionsPage'));
+const FinanceInsights = lazy(() => import('@/pages/finance/FinanceInsightsPage'));
+
 const NotFound = lazy(() => import('@/routes/NotFound'));
 
 const PageSkeleton = () => (
@@ -109,6 +115,18 @@ const router = createBrowserRouter([
       { path: '/admin/users/:id', element: <S><AdminUserDetail /></S> },
       { path: ROUTES.admin.leadRequests, element: <S><AdminLeadRequests /></S> },
       { path: ROUTES.admin.campaigns, element: <S><AdminCampaigns /></S> },
+    ],
+  },
+
+  // Finance Dashboard
+  { path: ROUTES.finance.login, element: <S><FinanceLogin /></S> },
+  { path: '/finance', element: <Navigate to={ROUTES.finance.dashboard} replace /> },
+  {
+    element: <S><FinanceLayout /></S>,
+    children: [
+      { path: ROUTES.finance.dashboard, element: <S><FinanceDashboard /></S> },
+      { path: ROUTES.finance.transactions, element: <S><FinanceTransactions /></S> },
+      { path: ROUTES.finance.insights, element: <S><FinanceInsights /></S> },
     ],
   },
 

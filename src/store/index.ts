@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth.slice';
 import { uiReducer } from './ui.slice';
 import { demoReducer } from './demo.slice';
+import { filtersReducer } from './filters.slice';
+import { financeAuthReducer } from './financeAuth.slice';
 
 export const store = configureStore({
   reducer: { 
@@ -18,7 +20,17 @@ export const store = configureStore({
     /**
      * demo: handles demo-related state, including demo data and loading status
      */
-    demo: demoReducer 
+    demo: demoReducer,
+
+    /**
+     * filters: manages active transaction filter state for the finance dashboard
+     */
+    filters: filtersReducer,
+
+    /**
+     * financeAuth: handles finance section authentication and role state
+     */
+    financeAuth: financeAuthReducer,
   },
 });
 
