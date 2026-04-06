@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Dialog,
   DialogContent,
@@ -16,9 +15,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useCreateTransaction } from '@/hooks/transactions/useCreateTransaction';
-import { createTransactionSchema } from '@/schemas/transaction.schema';
 import type { CreateTransactionDto } from '@/types/transaction.types';
 import { CATEGORIES } from '@/constants/categories';
+import { validationRules } from '@/lib/validationRules';
 
 interface AddTransactionModalProps {
   onClose: () => void;
@@ -35,10 +34,9 @@ export function AddTransactionModal({ onClose }: AddTransactionModalProps) {
     watch,
     formState: { errors },
   } = useForm<CreateTransactionDto>({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    resolver: zodResolver(createTransactionSchema) as any,
     defaultValues: {
       title: '',
+      amount: 0,
       type: 'expense',
       category: 'Food',
       date: new Date().toISOString().split('T')[0] ?? '',
@@ -63,7 +61,7 @@ export function AddTransactionModal({ onClose }: AddTransactionModalProps) {
           {/* Title */}
           <div className="space-y-1.5">
             <label className="text-sm font-medium">Title</label>
-            <Input placeholder="e.g. Grocery Store" {...register('title')} />
+            <Input placeholder="e.g. Grocery Store" {...register('title', validationRules.transactionTitle)} />
             {errors.title && <p className="text-xs text-destructive">{errors.title.message}</p>}
           </div>
 
@@ -71,13 +69,13 @@ export function AddTransactionModal({ onClose }: AddTransactionModalProps) {
             {/* Amount */}
             <div className="space-y-1.5">
               <label className="text-sm font-medium">Amount ($)</label>
-              <Input type="number" step="0.01" min="0" {...register('amount')} />
+              <Input type="number" step="0.01" min="0" {...register('amount', validationRules.transactionAmount)} />
               {errors.amount && <p className="text-xs text-destructive">{errors.amount.message}</p>}
             </div>
             {/* Date */}
             <div className="space-y-1.5">
               <label className="text-sm font-medium">Date</label>
-              <Input type="date" {...register('date')} />
+              <Input type="date" {...register('date', validationRules.transactionDate)} />
               {errors.date && <p className="text-xs text-destructive">{errors.date.message}</p>}
             </div>
           </div>

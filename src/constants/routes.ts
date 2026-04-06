@@ -28,10 +28,17 @@ export const ROUTES = {
     leadRequests: '/admin/lead-requests',
     campaigns: '/admin/campaigns',
   },
+  /** Finance app (Vite SPA) — same paths as top-level shortcuts below. */
   finance: {
-    login: '/finance/login',
-    dashboard: '/finance/dashboard',
-    transactions: '/finance/transactions',
-    insights: '/finance/insights',
+    login: '/login',
+    dashboard: '/dashboard',
+    transactions: '/transactions',
+    insights: '/insights',
+    account: '/account',
+    bankConnect: '/bank-connect',
   },
+  transactions: '/transactions',
+  insights: '/insights',
+  account: '/account',
+  bankConnect: '/bank-connect',
 } as const;

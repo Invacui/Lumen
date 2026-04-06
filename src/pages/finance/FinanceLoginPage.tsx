@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Wallet } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -8,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setFinanceAuth, selectFinanceIsAuthenticated } from '@/store/financeAuth.slice';
 import { getRoleForEmail } from '@/constants/roles';
 import { ROUTES } from '@/constants/routes';
+import logoUrl from '@/assets/icons/logo.svg?url';
 
 function decodeJwtPayload(token: string): Record<string, unknown> {
   const base64 = token.split('.')[1]?.replace(/-/g, '+').replace(/_/g, '/') ?? '';
@@ -23,7 +23,7 @@ export default function FinanceLoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(ROUTES.finance.dashboard, { replace: true });
+      navigate(ROUTES.dashboard, { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -52,7 +52,7 @@ export default function FinanceLoginPage() {
             const role = getRoleForEmail(user.email);
             dispatch(setFinanceAuth({ user, token: credential, role }));
             toast.success(`Welcome, ${user.name}`);
-            navigate(ROUTES.finance.dashboard);
+            navigate(ROUTES.dashboard);
           } catch {
             toast.error('Google sign-in failed');
           }
@@ -82,7 +82,7 @@ export default function FinanceLoginPage() {
       }),
     );
     toast.success('Signed in as Demo User');
-    navigate(ROUTES.finance.dashboard);
+    navigate(ROUTES.dashboard);
   };
 
   const handleAdminDemo = () => {
@@ -94,20 +94,18 @@ export default function FinanceLoginPage() {
       }),
     );
     toast.success('Signed in as Admin');
-    navigate(ROUTES.finance.dashboard);
+    navigate(ROUTES.dashboard);
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background to-muted/50 p-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#050505] p-4">
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary shadow-lg">
-            <Wallet className="h-6 w-6 text-primary-foreground" />
-          </div>
+          <img src={logoUrl} alt="Lumen Logo" className="h-12 w-12 rounded-2xl object-cover shadow-lg" />
           <div className="text-center">
-            <h1 className="text-2xl font-bold">Zorvyn Finance</h1>
-            <p className="text-sm text-muted-foreground">Track your income & expenses</p>
+            <h1 className="text-2xl font-bold text-white">Lumen</h1>
+            <p className="text-sm text-zinc-400">Track your income & expenses</p>
           </div>
         </div>
 

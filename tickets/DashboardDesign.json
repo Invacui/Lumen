@@ -1,0 +1,147 @@
+{
+    "type": "dashboard",
+    "layout": {
+      "header": {
+        "title": "Welcome back, Jason Taylor!",
+        "subtitle": "Track your sales activity, leads and deals here.",
+        "actions": [
+          { "type": "button", "label": "Filters" },
+          { "type": "button", "label": "Export" }
+        ]
+      },
+      "sections": [
+        {
+          "type": "grid",
+          "columns": 3,
+          "items": [
+            {
+              "type": "card",
+              "variant": "progress",
+              "title": "Your target is incomplete",
+              "description": "You have completed 48% of the given target, you can also check your status.",
+              "progress": 48,
+              "link": "Click here"
+            },
+            {
+              "type": "stat_card",
+              "title": "Total Customers",
+              "value": "1,02,890",
+              "trend": "+40%",
+              "chart": "line"
+            },
+            {
+              "type": "stat_card",
+              "title": "Total Revenue",
+              "value": "$56,562",
+              "trend": "+25%",
+              "chart": "line"
+            },
+            {
+              "type": "stat_card",
+              "title": "Conversion Ratio",
+              "value": "12.08%",
+              "trend": "-12%",
+              "chart": "line"
+            },
+            {
+              "type": "stat_card",
+              "title": "Total Deals",
+              "value": "2,543",
+              "trend": "+19%",
+              "chart": "line"
+            },
+            {
+              "type": "chart_card",
+              "title": "Leads by Source",
+              "chart": "donut",
+              "total": 4145,
+              "breakdown": [
+                { "label": "Mobile", "value": 1624 },
+                { "label": "Desktop", "value": 1267 },
+                { "label": "Laptop", "value": 1153 },
+                { "label": "Tablet", "value": 679 }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "items": [
+            {
+              "type": "card",
+              "title": "Top Deals",
+              "list": [
+                { "name": "Michael Jordan", "email": "michaeljordan@example.com", "amount": "$2,893" },
+                { "name": "Emigo Kieran", "email": "emigo.kieran@gmail.com", "amount": "$4,289" },
+                { "name": "Randy Orton", "email": "randy.orton@gmail.com", "amount": "$6,347" },
+                { "name": "George Peterson", "email": "george.peterson@gmail.com", "amount": "$3,894" },
+                { "name": "Kiara Advani", "email": "kiara.advani@gmail.com", "amount": "$2,679" }
+              ]
+            },
+            {
+              "type": "chart_card",
+              "title": "Revenue Analytics",
+              "chart": "line",
+              "datasets": [
+                { "label": "Sales", "data": [200, 400, 300, 500, 350, 600, 700, 800, 450, 400, 300, 450] },
+                { "label": "Revenue", "data": [150, 500, 450, 300, 550, 700, 500, 600, 700, 500, 550, 300] }
+              ],
+              "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            },
+            {
+              "type": "card",
+              "title": "Deals Status",
+              "value": 4289,
+              "comparison": "+1.02%",
+              "breakdown": [
+                { "label": "Successful Deals", "value": 987 },
+                { "label": "Pending Deals", "value": 1073 },
+                { "label": "Rejected Deals", "value": 1874 },
+                { "label": "Upcoming Deals", "value": 921 }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "items": [
+            {
+              "type": "chart_card",
+              "title": "Profit Earned",
+              "chart": "bar",
+              "labels": ["S", "M", "T", "W", "T", "F", "S"],
+              "data": [10, 15, 25, 40, 30, 20, 35]
+            },
+            {
+              "type": "table",
+              "title": "Deals Statistics",
+              "columns": ["Sales Rep", "Category", "Mail", "Location", "Date", "Action"],
+              "rows": [
+                ["Mayor Kelly", "Manufacture", "mayor@gmail.com", "Germany", "Sep 15 - Oct 12, 2023", "edit/delete"],
+                ["Andrew Garfield", "Development", "andrew@gmail.com", "Canada", "Apr 10 - Dec 12, 2023", "edit/delete"],
+                ["Simon Cowell", "Service", "simon@gmail.com", "Europe", "Sep 15 - Oct 12, 2023", "edit/delete"],
+                ["Mirinda Hers", "Marketing", "mirinda@gmail.com", "USA", "Apr 14 - Dec 14, 2023", "edit/delete"],
+                ["Jacob Smith", "Social Platform", "jacob@gmail.com", "Singapore", "Feb 25 - Nov 25, 2023", "edit/delete"]
+              ]
+            },
+            {
+              "type": "activity_feed",
+              "title": "Recent Activity",
+              "items": [
+                "Updated calendar events & added new events",
+                "Now theme for Spruko Website completed",
+                "Created a new Task today",
+                "New member joined",
+                "32 New people joined summit",
+                "Non Tarry added Robert Bright to AI project",
+                "Replied to new support request",
+                "Completed documentation of AI Summit"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }

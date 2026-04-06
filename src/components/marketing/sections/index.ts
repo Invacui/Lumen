@@ -1,0 +1,9 @@
+export { MarketingHeroSection } from '@/components/marketing/sections/MarketingHeroSection';
+export { MarketingTrustedBySection } from '@/components/marketing/sections/MarketingTrustedBySection';
+export { MarketingFeaturesSection } from '@/components/marketing/sections/MarketingFeaturesSection';
+export { MarketingHowItWorksSection } from '@/components/marketing/sections/MarketingHowItWorksSection';
+export { MarketingPricingSection } from '@/components/marketing/sections/MarketingPricingSection';
+export { MarketingTestimonialsSection } from '@/components/marketing/sections/MarketingTestimonialsSection';
+export { MarketingFaqSection } from '@/components/marketing/sections/MarketingFaqSection';
+export { MarketingLampReadySection } from '@/components/marketing/sections/MarketingLampReadySection';
+export { MarketingDashboardPreviewSection } from '@/components/marketing/sections/MarketingDashboardPreviewSection';

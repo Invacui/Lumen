@@ -22,7 +22,7 @@ export function MonthlyBarChart() {
   }
 
   return (
-    <Card>
+    <Card className='bg-[#11131a] border-white/10'>
       <CardHeader>
         <CardTitle className="text-base">Income vs Expenses</CardTitle>
       </CardHeader>

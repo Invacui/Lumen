@@ -1,0 +1,7 @@
+/**
+ * Durations / tuning for motion. Keyframes are defined in `tailwind.config.ts`
+ * (`animate-marquee-x`, `animate-image-glow`, `animate-border-beam`, etc.).
+ */
+:root {
+  --lumen-marquee-duration: 40s;
+}

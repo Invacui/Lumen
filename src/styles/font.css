@@ -1,0 +1,29 @@
+/* /Import font form scr/assets/fonts  */
+@font-face {
+  font-family: 'AeonikProRegular';
+  src: url('/fonts/AeonikPro-Regular.woff2') format('woff2'),
+       url('/fonts/AeonikPro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AeonikProBold';
+  src: url('/fonts/AeonikPro-Bold.woff2') format('woff2'),
+       url('/fonts/AeonikPro-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/**
+* example of using it
+* .@tailwind: <div class="font-(family-name:<AeonikProRegular>)">This text uses the AeonikProRegular font.</div>;
+**/
+@font-face {
+  font-family: 'AeonikProHeavy';
+  src: url('/fonts/AeonikPro-Heavy.woff2') format('woff2'),
+       url('/fonts/AeonikPro-Heavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+

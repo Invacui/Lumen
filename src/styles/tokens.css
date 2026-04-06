@@ -1,0 +1,39 @@
+/**
+ * Lumen design tokens — single source for brand color, glows, and shadows.
+ * Import before Tailwind in `index.css`. Tailwind maps `lumen-*` colors to these HSL triplets.
+ *
+ * To retheme: change values here only; components use `text-lumen-400`, `shadow-lumen-cta`, etc.
+ */
+:root {
+  /* HSL components (no `hsl()` wrapper) — use with Tailwind: hsl(var(--lumen-400) / <alpha>) */
+  --lumen-200: 120 90% 85%;
+  --lumen-300: 115 80% 70%;
+  --lumen-400: 110 70% 55%;
+  --lumen-500: 105 60% 40%;
+  --lumen-600: 100 50% 30%;
+
+  /* Hex fallbacks for inline gradients / beams / non-Tailwind contexts */
+  --lumen-beam-from: #34d399;
+  --lumen-beam-to: #10b981;
+
+  /* RGB channel tuple for rgba() in shadows where HSL is awkward */
+  --lumen-rgb: 52 211 153;
+  --lumen-rgb-deep: 16 185 129;
+
+  /* Preset shadows (brand-tinted) */
+  --lumen-shadow-sm: 0 0 10px rgb(var(--lumen-rgb) / 0.8);
+  --lumen-shadow-md: 0 0 40px -10px rgb(var(--lumen-rgb-deep) / 0.5);
+  --lumen-shadow-lg: 0 0 48px -16px rgb(var(--lumen-rgb-deep) / 0.35);
+  --lumen-shadow-xl: 0 0 60px -20px rgb(var(--lumen-rgb-deep) / 0.45);
+  --lumen-shadow-cta: 0 0 48px -4px rgb(var(--lumen-rgb) / 0.75);
+  --lumen-shadow-cta-soft: 0 0 48px -8px rgb(var(--lumen-rgb) / 0.55);
+
+  /* Hero / section ambient glows */
+  --lumen-radial-hero: hsl(160 90% 52% / 0.16);
+
+  /* Text glow layers (used by `.text-glow-lumen`) */
+  --lumen-glow-1: #42f31685;
+  --lumen-glow-2: #36c21285;
+  --lumen-glow-3: #2a9e0f85;
+  --lumen-glow-4: #1f7b0c85;
+}

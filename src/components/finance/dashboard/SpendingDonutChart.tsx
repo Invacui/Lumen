@@ -32,7 +32,7 @@ export function SpendingDonutChart() {
               data={chartData}
               cx="50%"
               cy="50%"
-              innerRadius={60}
+              innerRadius={10}
               outerRadius={100}
               paddingAngle={3}
               dataKey="value"

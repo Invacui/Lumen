@@ -1,9 +1,17 @@
+@import './styles/tokens.css';
+@import './styles/utilities.css';
+@import './styles/buttons.css';
+@import './styles/animations.css';
+@import './styles/font.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Outfit', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -40,7 +48,8 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* #050505 — marketing shell */
+    --background: 0 0% 1.96%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -72,6 +81,45 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow:
+      0 0 24px hsl(262 83% 58% / 0.35),
+      0 0 48px hsl(280 70% 50% / 0.2);
+  }
+}
+
+/* Thin scrollbar (marketing + app) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #61fd31d3 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.35);
+  border-radius: 9999px;
+}
+.bc {
+	border: 2px solid red;
+}
+
+button:active {
+  transform: scale(0.92);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
 }

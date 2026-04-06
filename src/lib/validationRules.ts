@@ -162,6 +162,23 @@ export const validationRules = {
   default: {
     required: "This field is required",
   },
+
+  transactionTitle: {
+    required: "Title is required",
+    minLength: { value: 2, message: "Title must be at least 2 characters" },
+    maxLength: { value: 120, message: "Title must be at most 120 characters" },
+  },
+
+  transactionAmount: {
+    required: "Amount is required",
+    min: { value: 0.01, message: "Amount must be greater than 0" },
+    validate: (value: number | string) =>
+      Number(value) > 0 || "Amount must be greater than 0",
+  },
+
+  transactionDate: {
+    required: "Date is required",
+  },
 };
 
 /**

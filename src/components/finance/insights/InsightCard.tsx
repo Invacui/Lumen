@@ -12,7 +12,7 @@ interface InsightCardProps {
 /** Insight tile showing a key metric with an icon and description. */
 export function InsightCard({ title, value, description, icon, accent = 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400' }: InsightCardProps) {
   return (
-    <Card className="hover:shadow-md transition-shadow">
+    <Card className="hover:shadow-md transition-shadow bg-[#11131a] border-white/10">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
           <div className={`rounded-xl p-3 ${accent}`}>{icon}</div>

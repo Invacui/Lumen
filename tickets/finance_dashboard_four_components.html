@@ -1,0 +1,231 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.dash{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-family:var(--font-sans,sans-serif);}
+.card{background:#1e1e2e;border:0.5px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;}
+.card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;border-bottom:0.5px solid rgba(255,255,255,0.07);}
+.card-title{font-size:13px;font-weight:500;color:#e2e8f0;border-left:3px solid #845adf;padding-left:8px;}
+.muted{font-size:11px;color:#8892a4;cursor:pointer;}
+.full{grid-column:1/-1;}
+</style>
+
+<div class="dash">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Total accounts</span>
+      <span class="muted">View All →</span>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="width:38px;height:38px;border-radius:50%;background:#845adf;display:flex;align-items:center;justify-content:center;">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div style="font-size:11px;color:#8892a4;">Total accounts</div>
+              <div style="font-size:22px;font-weight:500;color:#e2e8f0;">1,02,890</div>
+            </div>
+          </div>
+        </div>
+        <div id="sparkline1" style="width:100px;height:38px;"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+        <span style="font-size:12px;color:#845adf;">View All →</span>
+        <div style="text-align:right;">
+          <div style="font-size:12px;font-weight:500;color:#26bf94;">+40%</div>
+          <div style="font-size:11px;color:#8892a4;">this month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Spending by category</span>
+      <span class="muted">⋮</span>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;">
+        <div style="position:relative;width:130px;height:130px;">
+          <canvas id="donutChart" width="130" height="130"></canvas>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+            <div style="font-size:10px;color:#8892a4;">Total</div>
+            <div style="font-size:17px;font-weight:500;color:#e2e8f0;">4,145</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-top:0.5px dashed rgba(255,255,255,0.1);margin-top:12px;">
+        <div style="padding:10px 4px;text-align:center;border-right:0.5px dashed rgba(255,255,255,0.1);">
+          <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:4px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#845adf;display:inline-block;"></span>
+            <span style="font-size:10px;color:#8892a4;">Food</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:#e2e8f0;">1,624</div>
+        </div>
+        <div style="padding:10px 4px;text-align:center;border-right:0.5px dashed rgba(255,255,255,0.1);">
+          <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:4px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#23b7e5;display:inline-block;"></span>
+            <span style="font-size:10px;color:#8892a4;">Travel</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:#e2e8f0;">1,267</div>
+        </div>
+        <div style="padding:10px 4px;text-align:center;border-right:0.5px dashed rgba(255,255,255,0.1);">
+          <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:4px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#f5b849;display:inline-block;"></span>
+            <span style="font-size:10px;color:#8892a4;">Shop</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:#e2e8f0;">1,153</div>
+        </div>
+        <div style="padding:10px 4px;text-align:center;">
+          <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:4px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#26bf94;display:inline-block;"></span>
+            <span style="font-size:10px;color:#8892a4;">Bills</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:#e2e8f0;">679</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <div class="card-header">
+      <span class="card-title">Transaction history</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input type="text" placeholder="Search here" style="background:#2a2a3e;border:0.5px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 10px;font-size:12px;color:#e2e8f0;outline:none;width:130px;">
+        <button style="background:#845adf;border:none;border-radius:6px;padding:5px 12px;font-size:12px;color:#fff;cursor:pointer;">Sort by ∨</button>
+      </div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="border-bottom:0.5px solid rgba(255,255,255,0.08);">
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;width:32px;"><input type="checkbox" style="accent-color:#845adf;"></th>
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;">Account holder</th>
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;">Category</th>
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;">Card no.</th>
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;">Location</th>
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;">Date</th>
+            <th style="padding:10px 12px;text-align:left;color:#8892a4;font-weight:400;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="txTable"></tbody>
+      </table>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:0.5px solid rgba(255,255,255,0.07);">
+      <span style="font-size:12px;color:#8892a4;">Showing 5 entries →</span>
+      <div style="display:flex;gap:6px;">
+        <button style="background:#2a2a3e;border:0.5px solid rgba(255,255,255,0.12);border-radius:4px;padding:4px 10px;font-size:11px;color:#8892a4;cursor:pointer;">Prev</button>
+        <button style="background:#845adf;border:none;border-radius:4px;padding:4px 10px;font-size:11px;color:#fff;cursor:pointer;">1</button>
+        <button style="background:#2a2a3e;border:0.5px solid rgba(255,255,255,0.12);border-radius:4px;padding:4px 10px;font-size:11px;color:#8892a4;cursor:pointer;">2</button>
+        <button style="background:#2a2a3e;border:0.5px solid rgba(255,255,255,0.12);border-radius:4px;padding:4px 10px;font-size:11px;color:#845adf;cursor:pointer;">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <div class="card-header">
+      <span class="card-title">Recent activity</span>
+      <span class="muted">View All ∨</span>
+    </div>
+    <div style="padding:14px 16px;" id="activityFeed"></div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js"></script>
+<script>
+const txData = [
+  {name:'Mayor Kelly',initials:'MK',color:'#23b7e5',category:'Groceries',card:'**** 4821',loc:'Germany',locColor:'#23b7e5',locBg:'rgba(35,183,229,0.12)',date:'Sep 15 – Oct 12, 2023',checked:false},
+  {name:'Andrew Garfield',initials:'AG',color:'#845adf',category:'Transport',card:'**** 3309',loc:'Canada',locColor:'#845adf',locBg:'rgba(132,90,223,0.12)',date:'Apr 10 – Dec 12, 2023',checked:true},
+  {name:'Simon Cowel',initials:'SC',color:'#e25454',category:'Utilities',card:'**** 7712',loc:'Europe',locColor:'#e25454',locBg:'rgba(226,84,84,0.12)',date:'Sep 15 – Oct 12, 2023',checked:false},
+  {name:'Mirinda Hers',initials:'MH',color:'#f5b849',category:'Shopping',card:'**** 6630',loc:'USA',locColor:'#f5b849',locBg:'rgba(245,184,73,0.12)',date:'Apr 14 – Dec 14, 2023',checked:true},
+  {name:'Jacob Smith',initials:'JS',color:'#26bf94',category:'Dining',card:'**** 2241',loc:'Singapore',locColor:'#26bf94',locBg:'rgba(38,191,148,0.12)',date:'Feb 25 – Nov 25, 2023',checked:true},
+];
+
+const tbody = document.getElementById('txTable');
+txData.forEach(r => {
+  const tr = document.createElement('tr');
+  tr.style.cssText = 'border-bottom:0.5px solid rgba(255,255,255,0.06);';
+  tr.innerHTML = `
+    <td style="padding:10px 12px;"><input type="checkbox" ${r.checked?'checked':''} style="accent-color:#845adf;"></td>
+    <td style="padding:10px 12px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:${r.color}22;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:${r.color};">${r.initials}</div>
+        <span style="font-weight:500;color:#e2e8f0;font-size:12px;">${r.name}</span>
+      </div>
+    </td>
+    <td style="padding:10px 12px;color:#b0b8c8;font-size:12px;">${r.category}</td>
+    <td style="padding:10px 12px;color:#b0b8c8;font-size:12px;font-family:monospace;">${r.card}</td>
+    <td style="padding:10px 12px;"><span style="background:${r.locBg};color:${r.locColor};font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;">${r.loc}</span></td>
+    <td style="padding:10px 12px;color:#8892a4;font-size:11px;">${r.date}</td>
+    <td style="padding:10px 12px;">
+      <div style="display:flex;gap:6px;">
+        <button style="width:26px;height:26px;border-radius:4px;background:rgba(38,191,148,0.12);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+          <svg width="12" height="12" fill="none" stroke="#26bf94" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+        <button style="width:26px;height:26px;border-radius:4px;background:rgba(132,90,223,0.12);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+          <svg width="12" height="12" fill="none" stroke="#845adf" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+      </div>
+    </td>`;
+  tbody.appendChild(tr);
+});
+
+const activities = [
+  {color:'#845adf',bg:'rgba(132,90,223,0.12)',text:'Payment of <strong style="color:#e2e8f0;">$240</strong> to Netflix processed.',sub:'',time:'4:45PM'},
+  {color:'#23b7e5',bg:'rgba(35,183,229,0.12)',text:'Salary credit received for <strong style="color:#e2e8f0;">Acme Corp</strong>.',sub:'Direct deposit confirmed.',time:'3 hrs'},
+  {color:'#26bf94',bg:'rgba(38,191,148,0.12)',text:'Created a <strong style="color:#26bf94;">savings goal</strong> today.',sub:'',time:'22 hrs'},
+  {color:'#f5b849',bg:'rgba(245,184,73,0.12)',text:'Card ending <span style="background:rgba(245,184,73,0.15);color:#f5b849;padding:1px 6px;border-radius:3px;font-size:11px;">*4821</span> used at Amazon.',sub:'',time:'Today'},
+  {color:'#f5b849',bg:'rgba(245,184,73,0.12)',text:'3 upcoming bill payments due this week.',sub:'',time:'22 hrs'},
+  {color:'#23b7e5',bg:'rgba(35,183,229,0.12)',text:'Bank linked <strong style="color:#23b7e5;">HDFC Savings</strong> account.',sub:'',time:'12 hrs'},
+  {color:'rgba(200,200,220,0.6)',bg:'rgba(200,200,220,0.08)',text:'Responded to fraud alert. <svg style="vertical-align:middle;" width="14" height="14" fill="none" stroke="#26bf94" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',sub:'',time:'4 hrs'},
+  {color:'#845adf',bg:'rgba(132,90,223,0.12)',text:'Monthly report for <a href="#" style="color:#845adf;text-decoration:underline;">April 2025</a> ready.',sub:'',time:'4 hrs'},
+];
+
+const feed = document.getElementById('activityFeed');
+activities.forEach((a,i) => {
+  const li = document.createElement('div');
+  li.style.cssText = `display:flex;align-items:flex-start;gap:12px;padding:10px 0;${i<activities.length-1?'border-bottom:0.5px solid rgba(255,255,255,0.06);':''}`;
+  li.innerHTML = `
+    <div style="width:20px;height:20px;border-radius:50%;background:${a.bg};display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+      <div style="width:6px;height:6px;border-radius:50%;background:${a.color};"></div>
+    </div>
+    <div style="flex:1;min-width:0;">
+      <div style="font-size:12px;color:#b0b8c8;line-height:1.5;">${a.text}</div>
+      ${a.sub?`<div style="font-size:11px;color:#8892a4;margin-top:2px;">${a.sub}</div>`:''}
+    </div>
+    <div style="font-size:11px;color:#8892a4;white-space:nowrap;flex-shrink:0;">${a.time}</div>`;
+  feed.appendChild(li);
+});
+
+new ApexCharts(document.getElementById('sparkline1'),{
+  chart:{type:'line',height:38,width:100,sparkline:{enabled:true},animations:{enabled:false}},
+  series:[{data:[50,42,60,35,55,40,48,52,45,55]}],
+  stroke:{curve:'smooth',width:1.5},
+  colors:['#845adf'],
+  tooltip:{enabled:false}
+}).render();
+
+const dCtx = document.getElementById('donutChart').getContext('2d');
+const total = 4145, slices = [
+  {v:1624,c:'#845adf'},{v:1267,c:'#23b7e5'},{v:1153,c:'#f5b849'},{v:679,c:'#26bf94'}
+];
+let start = -Math.PI/2;
+const cx=65,cy=65,r=52,ir=36;
+slices.forEach(s => {
+  const angle = (s.v/total)*Math.PI*2;
+  dCtx.beginPath();
+  dCtx.moveTo(cx,cy);
+  dCtx.arc(cx,cy,r,start,start+angle);
+  dCtx.closePath();
+  dCtx.fillStyle=s.c;
+  dCtx.fill();
+  start+=angle;
+});
+dCtx.beginPath();
+dCtx.arc(cx,cy,ir,0,Math.PI*2);
+dCtx.fillStyle='#1e1e2e';
+dCtx.fill();
+</script>

@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
 import { TrendingUp, Award, ArrowBigUp } from 'lucide-react';
+import type { ApexOptions } from 'apexcharts';
+import ReactApexChart from 'react-apexcharts';
 import { Skeleton } from '@/components/ui/skeleton';
 import { MonthlyBarChart } from '@/components/finance/insights/MonthlyBarChart';
 import { InsightCard } from '@/components/finance/insights/InsightCard';
 import { TopCategoryBadge } from '@/components/finance/insights/TopCategoryBadge';
-import { SpendingDonutChart } from '@/components/finance/dashboard/SpendingDonutChart';
 import { useInsights } from '@/hooks/summary/useInsights';
 import { formatCurrency } from '@/lib/utils';
 import type { Category } from '@/types/transaction.types';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const container = {
   hidden: { opacity: 0 },
@@ -18,6 +20,17 @@ const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 /** Insights page with spending analysis and month-over-month trends. */
 export default function FinanceInsightsPage() {
   const { data, isLoading } = useInsights();
+  const radarOptions: ApexOptions = {
+    chart: { toolbar: { show: false }, background: 'transparent' },
+    xaxis: { categories: data?.categoryBreakdown.map((item) => item.category) ?? [] },
+    yaxis: { show: false },
+    stroke: { width: 2 },
+    fill: { opacity: 0.2 },
+    markers: { size: 4 },
+    colors: ['#8b5cf6'],
+    tooltip: { theme: 'dark' },
+    dataLabels: { enabled: true },
+  };
 
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
@@ -86,7 +99,29 @@ export default function FinanceInsightsPage() {
       {/* Charts */}
       <motion.div variants={item} className="grid gap-6 lg:grid-cols-2">
         <MonthlyBarChart />
-        <SpendingDonutChart />
+        <Card className="border-white/10 bg-[#11131a]">
+          <CardHeader>
+            <CardTitle className="text-white">Spending by Category (Spider)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {isLoading ? (
+              <Skeleton className="h-[280px] w-full rounded-xl" />
+            ) : (
+              <ReactApexChart
+                type="radar"
+                height={300}
+                className="-mt-10"
+                options={radarOptions}
+                series={[
+                  {
+                    name: 'Spending',
+                    data: data?.categoryBreakdown.map((item) => item.amount) ?? [],
+                  },
+                ]}
+              />
+            )}
+          </CardContent>
+        </Card>
       </motion.div>
     </motion.div>
   );

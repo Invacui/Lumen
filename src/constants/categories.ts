@@ -7,7 +7,7 @@ export const CATEGORY_COLORS: Record<Category, string> = {
   Transport: '#3b82f6',
   Utilities: '#8b5cf6',
   Entertainment: '#ec4899',
-  Health: '#10b981',
+  Health: '#10b981' /* matches --lumen-beam-to / brand */,
   Income: '#22c55e',
 };
 
@@ -16,6 +16,7 @@ export const CATEGORY_BG: Record<Category, string> = {
   Transport: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
   Utilities: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
   Entertainment: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400',
-  Health: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
+  Health:
+    'bg-lumen-200/35 text-lumen-600 dark:bg-lumen-500/15 dark:text-lumen-400',
   Income: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
 };

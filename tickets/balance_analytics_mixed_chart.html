@@ -1,0 +1,103 @@
+
+<div style="background: #1a1a2e; border-radius: 12px; padding: 16px 20px; width: 100%; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+    <span style="font-size: 14px; font-weight: 500; color: #e2e8f0;">Balance Analytics</span>
+    <span style="font-size: 12px; color: #8892a4; cursor: pointer;">View All ∨</span>
+  </div>
+  <div id="balanceChart"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js"></script>
+<script>
+const options = {
+  chart: {
+    type: 'line',
+    height: 320,
+    background: 'transparent',
+    toolbar: { show: false },
+    zoom: { enabled: false },
+    animations: { enabled: true, speed: 600 }
+  },
+  theme: { mode: 'dark' },
+  title: {
+    text: 'Balance analytics with income & spending (USD)',
+    align: 'left',
+    style: { fontSize: '11px', fontWeight: '400', color: '#8892a4' }
+  },
+  series: [
+    {
+      name: 'Savings',
+      type: 'line',
+      data: [180, 140, 260, 120, 220, 340, 480, 380, 300, 360, 210, 290]
+    },
+    {
+      name: 'Income',
+      type: 'line',
+      data: [420, 650, 480, 560, 720, 820, 520, 680, 760, 610, 525, 430]
+    },
+    {
+      name: 'Spending',
+      type: 'area',
+      data: [500, 420, 590, 480, 530, 650, 790, 560, 510, 620, 454, 520]
+    }
+  ],
+  stroke: {
+    curve: 'smooth',
+    width: [2, 2, 0],
+    dashArray: [0, 5, 0]
+  },
+  fill: {
+    type: ['solid', 'solid', 'solid'],
+    opacity: [1, 1, 0.05]
+  },
+  colors: ['rgba(132,90,223,0.85)', 'rgba(35,183,229,0.85)', 'rgba(119,119,142,0.3)'],
+  grid: {
+    borderColor: '#2a2a3e',
+    strokeDashArray: 3,
+    xaxis: { lines: { show: false } },
+    yaxis: { lines: { show: true } }
+  },
+  xaxis: {
+    categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    labels: { style: { colors: '#8892a4', fontSize: '11px' } },
+    axisBorder: { show: false },
+    axisTicks: { show: false }
+  },
+  yaxis: {
+    labels: {
+      style: { colors: '#8892a4', fontSize: '11px' },
+      formatter: (v) => '$' + v
+    },
+    min: 0,
+    max: 1000,
+    tickAmount: 5
+  },
+  tooltip: {
+    theme: 'dark',
+    shared: true,
+    intersect: false,
+    y: {
+      formatter: (v, { seriesIndex }) => seriesIndex === 2 ? v : '$' + v
+    }
+  },
+  legend: {
+    show: true,
+    position: 'bottom',
+    horizontalAlign: 'center',
+    labels: { colors: '#8892a4' },
+    markers: { width: 10, height: 10, radius: 50 }
+  },
+  dataLabels: { enabled: false },
+  markers: { size: 0 },
+  dropShadow: {
+    enabled: true,
+    top: 8,
+    left: 0,
+    blur: 6,
+    opacity: 0.1
+  }
+};
+
+const chart = new ApexCharts(document.getElementById('balanceChart'), options);
+chart.render();
+</script>

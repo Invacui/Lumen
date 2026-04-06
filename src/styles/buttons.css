@@ -1,0 +1,22 @@
+/**
+ * Lumen button recipes — composable with `className` / `cn()` from UI components.
+ * Uses tokens + Tailwind `lumen` palette.
+ */
+
+@layer components {
+  .btn-lumen-cta {
+    @apply rounded-full border-0 bg-lumen-500 px-8 text-base font-semibold text-zinc-950 shadow-lumen-cta transition-colors hover:bg-lumen-300;
+  }
+
+  .btn-lumen-cta-sm {
+    @apply rounded-full border-0 bg-lumen-500 px-4 text-sm font-semibold text-zinc-950 shadow-lumen-cta-soft transition-colors hover:bg-lumen-300;
+  }
+
+  .btn-lumen-hero {
+    @apply h-12 rounded-full border-0  px-8 text-base font-semibold text-zinc-950 shadow-lumen-cta transition-colors hover:bg-lumen-300;
+  }
+
+  .btn-lumen-lamp {
+    @apply h-12 rounded-full bg-lumen-500 px-10 text-base font-semibold text-zinc-950 shadow-lumen-cta-soft transition-colors hover:bg-lumen-300;
+  }
+}

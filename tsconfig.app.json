@@ -10,6 +10,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
@@ -27,10 +28,11 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Paths */
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

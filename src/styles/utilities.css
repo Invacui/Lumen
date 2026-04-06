@@ -1,0 +1,21 @@
+/**
+ * Reusable utility classes that consume `tokens.css` variables.
+ */
+@layer utilities {
+  .text-glow-lumen {
+    text-shadow:
+      0 0 32px var(--lumen-glow-1),
+      0 0 64px var(--lumen-glow-2),
+      0 0 96px var(--lumen-glow-3),
+      0 0 140px var(--lumen-glow-4);
+  }
+
+  /** @deprecated Use `.text-glow-lumen`; kept for gradual migration */
+  .text-glow-emerald {
+    text-shadow:
+      0 0 32px var(--lumen-glow-1),
+      0 0 64px var(--lumen-glow-2),
+      0 0 96px var(--lumen-glow-3),
+      0 0 140px var(--lumen-glow-4);
+  }
+}
