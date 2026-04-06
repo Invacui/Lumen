@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { LoadingCurtain } from '@/components/common/LoadingCurtain';
 import AppRoutes from './Routes';
 
 /**
@@ -6,5 +9,14 @@ import AppRoutes from './Routes';
  * Smooth scroll and global providers live in `main.tsx`.
  */
 export default function App() {
-  return <RouterProvider router={AppRoutes} />;
+  const [showCurtain, setShowCurtain] = useState(true);
+
+  return (
+    <>
+      <AnimatePresence>
+        {showCurtain && <LoadingCurtain onComplete={() => setShowCurtain(false)} />}
+      </AnimatePresence>
+      <RouterProvider router={AppRoutes} />
+    </>
+  );
 }

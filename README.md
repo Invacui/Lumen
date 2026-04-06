@@ -1,22 +1,48 @@
-# Pocket Comet Expense Lab
+# Lumen Expense Tracker
 
-A frontend-only finance tracking dashboard built with React, Vite, TypeScript, Tailwind, Redux Toolkit, TanStack Query, and React Hook Form.
+Lumen is a frontend finance dashboard that helps users track spending, income, savings trends, and transaction activity with a modern dark UI.
 
-This app lets you:
-- sign in (Google OAuth or demo users)
-- view balance, income, expense, and spending breakdown charts
-- filter transactions by type/category/date/search
-- add/edit/delete transactions (admin role only)
-- view insights such as top category and biggest transaction
+It includes:
+- Google/demo login flow and role-based access (`viewer` / `admin`)
+- Dashboard analytics (ApexCharts + Recharts in feature pages)
+- Insights and category analysis
+- Transaction filtering, URL-synced filters, and CSV export
+- Bank connect demo flow
 
-## Stack
+---
 
-- React 18 + Vite 5 + TypeScript (strict)
-- Tailwind CSS + shadcn/ui components
-- Redux Toolkit for app state (auth, UI, filters)
-- TanStack Query for async/mock API state
-- React Hook Form with rules from `src/lib/validationRules.ts` (no Zod in finance forms)
-- Recharts for dashboard/insights charts
+## Tech Stack
+
+### Core
+- `react` + `react-dom` (React 18)
+- `vite` (build/dev server)
+- `typescript` (strict TS setup)
+
+### State and Data
+- `@reduxjs/toolkit` + `react-redux`
+- `@tanstack/react-query`
+- `axios` + `axios-mock-adapter` (mock API layer)
+
+### UI and Styling
+- `tailwindcss`
+- `framer-motion`
+- `lucide-react`
+- `@radix-ui/*` primitives (via app UI components)
+- `sonner` (toasts)
+
+### Forms, Validation, Tables, Charts
+- `react-hook-form`
+- `zod` + `@hookform/resolvers`
+- `@tanstack/react-table`
+- `recharts`
+- `apexcharts` + `react-apexcharts`
+
+### Routing and Utilities
+- `react-router-dom`
+- `date-fns`
+- `clsx`, `class-variance-authority`, `tailwind-merge`
+
+---
 
 ## Quick Start
 
@@ -25,11 +51,13 @@ npm install
 npm run dev
 ```
 
-App runs on [http://localhost:5173](http://localhost:5173)
+Local app: [http://localhost:5173](http://localhost:5173)
+
+---
 
 ## Environment Variables
 
-Create `environments/.env.local`:
+Create an env file (example: `.env.local`):
 
 ```bash
 VITE_GOOGLE_CLIENT_ID=your-google-client-id
@@ -38,29 +66,65 @@ VITE_API_URL=http://localhost:3000
 
 Notes:
 - `VITE_GOOGLE_CLIENT_ID` enables Google Sign-In.
-- If missing, you can still use Demo Viewer/Admin login.
-- Data is mocked locally; no real backend is required.
+- Demo viewer/admin login still works without Google setup.
+- Finance data is mocked in local files and served through the mock API layer.
+
+---
 
 ## Scripts
 
 ```bash
-npm run dev         # local development
-npm run build       # production build
-npm run preview     # preview built app
-npm test            # run vitest
-npm run test:ui     # run vitest UI
+npm run dev
+npm run build
+npm run preview
+npm run test
+npm run test:ui
 ```
 
-## App Routes
+---
 
+## Project Structure
+
+```txt
+src/
+  components/
+    finance/                 # dashboard, transactions, insights, layout components
+    marketing/               # landing/marketing components
+    ui/                      # reusable UI primitives
+  data/                      # mocked transactions and summary data
+  hooks/
+    transactions/            # transaction-related hooks (queries, URL filters)
+    summary/                 # summary/insight hooks
+  layouts/
+    finance/                 # authenticated app shell
+    marketing/               # landing shell
+  pages/
+    finance/                 # Dashboard, Transactions, Insights, Account, Bank Connect, Login
+    marketing/               # landing page(s)
+  services/                  # API service wrappers
+  store/                     # Redux slices and store config
+  constants/                 # routes, categories, roles
+  lib/                       # shared utilities and API setup
+  Routes.tsx                 # route tree
+```
+
+---
+
+## Main Routes
+
+- `/` marketing landing
 - `/login`
 - `/dashboard`
 - `/transactions`
 - `/insights`
+- `/account`
+- `/bank-connect`
+
+---
 
 ## Roles
 
-- `viewer`: read-only analytics and transaction list
+- `viewer`: read-only analytics and transaction browsing
 - `admin`: can add/edit/delete transactions
 
-Use the topbar role switcher to demo both experiences.
+Use the role switcher in the finance topbar for demo/testing.
