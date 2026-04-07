@@ -2,7 +2,7 @@
 
 Lumen is a frontend finance dashboard that helps users track spending, income, savings trends, and transaction activity with a modern dark UI.
 
-It includes:
+It includes: 
 - Google/demo login flow and role-based access (`viewer` / `admin`)
 - Dashboard analytics (ApexCharts + Recharts in feature pages)
 - Insights and category analysis
