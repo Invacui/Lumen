@@ -12,6 +12,7 @@ import { useSummary } from '@/hooks/summary/useSummary';
 import { useInsights } from '@/hooks/summary/useInsights';
 import { transactionService } from '@/services/transaction.service';
 import { formatCurrency, formatDate } from '@/lib/utils';
+import Pyramid from '@/assets/images/pyramid.jpg'
 import type { Transaction } from '@/types/transaction.types';
 import {
   DropdownMenu,
@@ -263,7 +264,7 @@ export default function FinanceDashboardPage() {
 
       <motion.div variants={item} className="grid gap-4 xl:grid-cols-[23%_53%_24%]">
         <div className="space-y-4">
-            <Card className="flex justify-evenly bg-[url('src/assets/images/pyramid.jpg')] bg-cover pt-6 border-white/10 bg-[#11131a]">
+            <Card style={{ backgroundImage: `url(${Pyramid})` }} className="flex justify-evenly bg-cover pt-6 border-white/10 bg-[#11131a]">
             <CardContent className="py-2 flex-row items-center justify-between mt-0  ">
             <CardTitle className="text-sm text-white">Your savings are lacking</CardTitle>
               <div className="space-y-1 mt-0 ">
